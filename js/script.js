@@ -168,6 +168,7 @@ function check() {
     if (!wordList.includes(lowGuess)) {
         nothing.style.display = "flex";
         nothingP.innerText = "Kata tidak ada di kamus";
+        errorTile();
         return;
     }
 
