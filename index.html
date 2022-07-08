@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charsset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale = 1.0, user-scalable = no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/popUp.css">
+    <title>Wordlesia</title>
+</head>
+
+<body>
+    <!-- Pop Up -->
+    <div class="rules">
+        <div class="close"><i class="fa-solid fa-xmark"></i></div>
+        <h3>CARA BERMAIN</h3>
+        <p>Tebak kata <strong>WORDLESIA</strong> dalam enam tebakan</p>
+        <p>Setiap tebakan harus berupa kata lima huruf yang valid. Tekan tombol enter untuk submit</p>
+        <p>Setelah setiap tebakan, warna kotak akan berubah untuk menunujkkan seberapa dekat tebakanmu dengan kata
+            yang
+            dimaksud</p>
+        <hr>
+        <h4>Contoh</h4>
+        <div class="exam true">
+            <div class="tile correct">K</div>
+            <div class="tile">A</div>
+            <div class="tile">S</div>
+            <div class="tile">U</div>
+            <div class="tile">R</div>
+        </div>
+        <p>Huruf <strong>K</strong> ada pada kata yang dimaksud dan berada diposisi yang tepat</p>
+        <div class="exam true">
+            <div class="tile">L</div>
+            <div class="tile present">E</div>
+            <div class="tile">B</div>
+            <div class="tile">A</div>
+            <div class="tile">H</div>
+        </div>
+        <p>Huruf <strong>E</strong> ada pada kata yang dimaksud tapi diposisi yang salah</p>
+        <div class="exam true">
+            <div class="tile">V</div>
+            <div class="tile">O</div>
+            <div class="tile">K</div>
+            <div class="tile absent">A</div>
+            <div class="tile">L</div>
+        </div>
+        <p>Huruf <strong>A</strong> tidak ada pada kata yang dimaksud</p>
+    </div>
+    <div class="result">
+        <h4></h4>
+        <div class="close"><i class="fa-solid fa-xmark"></i></div>
+        <div class="content">
+            <div class="data"></div>
+            <p class="answerIs">Jawabannya adalah :</p>
+            <a href="#" id="wordIs" target="blank"></a>
+        </div>
+        <button type="button">MAIN LAGI</button>
+    </div>
+    <div class="notEnough">
+        <div class="close"><i class="fa-solid fa-xmark"></i></div>
+        <p></p>
+    </div>
+    <div class="nothing">
+        <div class="close"><i class="fa-solid fa-xmark"></i></div>
+        <p></p>
+    </div>
+
+    <!-- Main Content -->
+    <header>
+        <div class="head">
+            <i class="fa-solid fa-bars"></i>
+            <h1 class="title">Wordlesia</h1>
+            <i class="fa-solid fa-question"></i>
+        </div>
+        <hr>
+    </header>
+    <div class="board"></div>
+    <div class="key">
+        <div class="row row-1">
+            <div class="keyTile" id="KeyQ">Q</div>
+            <div class="keyTile" id="KeyW">W</div>
+            <div class="keyTile" id="KeyE">E</div>
+            <div class="keyTile" id="KeyR">R</div>
+            <div class="keyTile" id="KeyT">T</div>
+            <div class="keyTile" id="KeyY">Y</div>
+            <div class="keyTile" id="KeyU">U</div>
+            <div class="keyTile" id="KeyI">I</div>
+            <div class="keyTile" id="KeyO">O</div>
+            <div class="keyTile" id="KeyP">P</div>
+        </div>
+        <div class="row row-2">
+            <div class="keyTile" id="KeyA">A</div>
+            <div class="keyTile" id="KeyS">S</div>
+            <div class="keyTile" id="KeyD">D</div>
+            <div class="keyTile" id="KeyF">F</div>
+            <div class="keyTile" id="KeyG">G</div>
+            <div class="keyTile" id="KeyH">H</div>
+            <div class="keyTile" id="KeyJ">J</div>
+            <div class="keyTile" id="KeyK">K</div>
+            <div class="keyTile" id="KeyL">L</div>
+        </div>
+        <div class="row row-3">
+            <div class="keyTile" id="Enter">ENTER</div>
+            <div class="keyTile" id="KeyZ">Z</div>
+            <div class="keyTile" id="KeyX">X</div>
+            <div class="keyTile" id="KeyC">C</div>
+            <div class="keyTile" id="KeyV">V</div>
+            <div class="keyTile" id="KeyB">B</div>
+            <div class="keyTile" id="KeyN">N</div>
+            <div class="keyTile" id="KeyM">M</div>
+            <div class="keyTile" id="Backspace"><i class="fa-solid fa-delete-left"></i></div>
+        </div>
+    </div>
+
+</body>
+<script src="js/wordList.js"></script>
+<script src="js/script.js"></script>
+
+</html>

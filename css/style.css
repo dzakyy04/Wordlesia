@@ -1,0 +1,259 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Russo+One&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Open Sans',
+        sans-serif;
+    user-select: none;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+header {
+    height: 10vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header h1 {
+    font-family: 'Russo One',
+        sans-serif;
+}
+
+.head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    margin: auto;
+}
+
+.head i {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    font-size: 30px;
+    padding: 3px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+i.fa-question {
+    border: 2px solid black;
+    border-radius: 50%;
+    font-size: 20px;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 38px;
+    height: 90%;
+}
+
+.board {
+    margin: auto;
+    width: 300px;
+    height: 55vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: auto;
+    margin-top: 3vh;
+    flex-wrap: wrap;
+}
+
+.tile {
+    /* box */
+    width: 18%;
+    height: 15%;
+    border: 2px solid lightgray;
+    border-radius: 8px;
+
+    /* Letter */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    font-size: 36px;
+    font-family: 'Russo One',
+        sans-serif;
+}
+
+.key {
+    width: 100%;
+    height: 22vh;
+    margin-top: 6vh;
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    height: 30%;
+    margin: 2px 0;
+}
+
+.keyTile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 2.5px;
+    height: 100%;
+    width: 50px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px;
+    background-color: lightgray;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.keyTile:hover {
+    filter: brightness(1.07);
+}
+
+.keyTile#Enter {
+    width: 80px;
+}
+
+.keyTile#Backspace {
+    width: 60px;
+}
+
+
+/* Color change */
+.absent {
+    color: white;
+    background-color: rgb(164, 174, 196);
+    animation: changeColor .9s;
+}
+
+.present {
+    color: white;
+    background-color: rgb(243, 194, 55);
+    animation: changeColor .9s;
+}
+
+.correct {
+    color: white;
+    background-color: rgb(121, 184, 81);
+    animation: changeColor .9s;
+}
+
+
+/* Animation */
+@keyframes input {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-3px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes notifIn {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes changeColor {
+    0% {
+        transform: rotateX(0deg);
+    }
+
+    50% {
+        transform: rotateX(90deg);
+    }
+
+    100% {
+        transform: rotateX(0deg);
+    }
+}
+
+@keyframes shake {
+
+    10%,
+    90% {
+        transform: translate3d(-1px, 0, 0);
+    }
+
+    20%,
+    80% {
+        transform: translate3d(2px, 0, 0);
+    }
+
+    30%,
+    50%,
+    70% {
+        transform: translate3d(-4px, 0, 0);
+    }
+
+    40%,
+    60% {
+        transform: translate3d(4px, 0, 0);
+    }
+}
+
+/* Responsive */
+@media screen and (max-width: 550px) {
+    .keyTile {
+        margin: 0 1px;
+        height: 100%;
+        font-size: 13px;
+    }
+
+    .keyTile#Enter {
+        width: 50px;
+    }
+
+    .keyTile#Backspace {
+        width: 40px;
+    }
+
+    .row-1 {
+        padding: 0 1vw;
+    }
+
+    .row-2 {
+        padding: 0 4vw;
+    }
+
+    .row-3 {
+        padding: 0 2vw;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .board {
+        width: 80vw;
+        height: 56vh;
+    }
+
+    .tile {
+        font-size: 32px;
+    }
+}

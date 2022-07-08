@@ -1,0 +1,153 @@
+/* Rules */
+.rules {
+    max-width: 500px;
+    background-color: white;
+    height: 100vh;
+    position: relative;
+    margin: auto;
+    z-index: 99;
+    padding: 0 2%;
+    animation: notifIn .3s;
+    overflow-y: auto;
+}
+
+.rules h3 {
+    font-family: 'Open Sans',
+        sans-serif;
+    text-align: center;
+    margin: 10px 0 20px 0;
+}
+
+.rules p {
+    margin: 5px 0;
+}
+
+.rules h4 {
+    margin: 10px 0;
+}
+
+.rules .exam {
+    display: flex;
+}
+
+.rules .exam .tile {
+    width: 50px;
+    height: 50px;
+    margin-right: 5px;
+}
+
+/* Result */
+.result {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -150px;
+    margin-left: -150px;
+    z-index: 999;
+    width: 300px;
+    height: 300px;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 0 30px;
+    border-radius: 20px;
+    background-color: white;
+    animation: notifIn .3s;
+}
+
+.result h4 {
+    text-align: center;
+    padding: 5% 0;
+    width: 100%;
+    background-color: rgb(243, 241, 234);
+    border-start-end-radius: 20px;
+    border-start-start-radius: 20px;
+}
+
+.result .content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.result .content .data {
+    margin: 15px 0;
+}
+
+.result .content .answerIs {
+    margin-top: 10px;
+}
+
+.result .content a {
+    margin: 10px 0;
+    text-decoration: none;
+    color: black;
+    font-size: 30px;
+    background-color: #F1F3F9;
+    padding: 8px 18px;
+    border: 1px dashed rgb(186, 192, 206);
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.result button {
+    background-color: #6AC66A;
+    padding: 10px 15px;
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5%;
+    transition: .3s;
+}
+
+.result button:hover {
+    background-color: #25c425;
+}
+
+/* Other pop up */
+.notEnough,
+.nothing {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -150px;
+    z-index: 999;
+    width: 300px;
+    height: 100px;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    height: 100px;
+    background-color: white;
+    box-shadow: 0 0 30px;
+    border-radius: 20px;
+    animation: notifIn .3s;
+}
+
+.notEnough p,
+.nothing p {
+    font-size: 20px;
+}
+
+.close {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 5px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    color: rgb(206, 0, 0);
+    transition: .3s;
+}
+
+.close:hover {
+    color: red;
+}
