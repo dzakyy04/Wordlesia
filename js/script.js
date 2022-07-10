@@ -13,6 +13,7 @@ const rulesClose = document.querySelector(".rules .close");
 
 rulesClose.addEventListener("click", function () {
     rules.style.display = "none";
+    localStorage.setItem("showRules", "off");
 });
 
 question.addEventListener("click", function () {
@@ -57,7 +58,11 @@ nothingClose.addEventListener("click", function () {
 
 // Onload
 window.onload = function () {
-    rules.style.display = "block";
+    if(localStorage.getItem("showRules") == "off") {
+        rules.style.display = "none";
+    } else {
+        rules.style.display = "block";
+    }
     init();
 }
 
