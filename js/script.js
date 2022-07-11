@@ -56,14 +56,51 @@ nothingClose.addEventListener("click", function () {
     nothing.style.display = "none";
 });
 
+
+// Setting
+const hamburger = document.querySelector(".fa-bars")
+const setting = document.querySelector(".setting");
+const settingClose = document.querySelector(".setting .close");
+
+settingClose.addEventListener("click", function () {
+    setting.style.display = "none";
+});
+
+hamburger.addEventListener("click", function () {
+    setting.style.display = "block";
+});
+
+// Toggle
+const toggleDark = document.querySelector(".toggle-checkbox.dark");
+toggleDark.addEventListener("change", () => {
+    if (toggleDark.checked == true) {
+        darkModeOn();
+        localStorage.setItem("theme", "dark");
+    } else {
+        darkModeOff();
+        localStorage.removeItem("theme");
+    }
+});
+
+
+
 // Onload
 window.onload = function () {
-    if(localStorage.getItem("showRules") == "off") {
+    init();
+
+    if (localStorage.getItem("showRules") == "off") {
         rules.style.display = "none";
     } else {
         rules.style.display = "block";
     }
-    init();
+
+    if (localStorage.getItem("theme") == "dark") {
+        darkModeOn();
+        toggleDark.checked = true;
+    } else {
+        darkModeOff();
+    }
+
 }
 
 function init() {
@@ -140,10 +177,12 @@ function init() {
                 col--;
             }
             let currTile = document.getElementById(row + "-" + col);
+            currTile.classList.remove("inputLetter");
             currTile.innerText = "";
         } else if (e.code[0] == "K" && e.code[1] == "e" && e.code[2] == "y" && col < width) {
             let currTile = document.getElementById(row + "-" + col);
             currTile.innerText = e.code[3];
+            currTile.classList.add("inputLetter");
             inputTile(currTile);
             col++;
         }
@@ -187,14 +226,17 @@ function check() {
                 if (i == j) {
                     currTile.classList.add("correct");
                     keyTile.classList.add("correct");
+                    currTile.classList.remove("inputLetter");
                     correct++;
                 } else {
                     currTile.classList.add("present");
                     keyTile.classList.add("present");
+                    currTile.classList.remove("inputLetter");
                 }
             } else {
                 currTile.classList.add("absent");
                 keyTile.classList.add("absent");
+                currTile.classList.remove("inputLetter");
             }
         }
     }
@@ -240,4 +282,38 @@ function inputTile(currTile) {
     setTimeout(() => {
         currTile.removeAttribute("style");
     }, 300);
+}
+
+function darkModeOn() {
+    // Tile
+    const tile = document.querySelectorAll(".tile");
+    for (let i = 0; i < tile.length; i++) {
+        tile[i].classList.add("tile-darkMode");
+    }
+    // Keyboard
+    const keyTile = document.querySelectorAll(".keyTile");
+    for (let i = 0; i < keyTile.length; i++) {
+        keyTile[i].classList.add("keyTile-darkMode");
+    }
+    // Result
+    winOrLose.style.backgroundColor = "rgb(49,52,72)";
+    // Body
+    document.body.classList.add("darkMode");
+}
+
+function darkModeOff() {
+    // Tile
+    const tile = document.querySelectorAll(".tile");
+    for (let i = 0; i < tile.length; i++) {
+        tile[i].classList.remove("tile-darkMode");
+    }
+    // Keyboard
+    const keyTile = document.querySelectorAll(".keyTile");
+    for (let i = 0; i < keyTile.length; i++) {
+        keyTile[i].classList.remove("keyTile-darkMode");
+    }
+    // Result
+    winOrLose.style.backgroundColor = "rgb(243, 241, 234)";
+    // Body
+    document.body.classList.remove("darkMode");
 }

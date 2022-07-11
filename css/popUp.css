@@ -1,7 +1,7 @@
 /* Rules */
 .rules {
     max-width: 500px;
-    background-color: white;
+    background-color: inherit;
     height: 100vh;
     position: relative;
     margin: auto;
@@ -16,6 +16,7 @@
         sans-serif;
     text-align: center;
     margin: 10px 0 20px 0;
+    font-size: 26px;
 }
 
 .rules p {
@@ -51,7 +52,7 @@
     align-items: center;
     box-shadow: 0 0 30px;
     border-radius: 20px;
-    background-color: white;
+    background-color: inherit;
     animation: notifIn .3s;
 }
 
@@ -123,7 +124,7 @@
     justify-content: center;
     width: 300px;
     height: 100px;
-    background-color: white;
+    background-color: inherit;
     box-shadow: 0 0 30px;
     border-radius: 20px;
     animation: notifIn .3s;
@@ -150,4 +151,100 @@
 
 .close:hover {
     color: red;
+}
+
+.setting {
+    display: none;
+    max-width: 500px;
+    background-color: inherit;
+    height: 100vh;
+    position: relative;
+    margin: auto;
+    z-index: 99;
+    padding: 0 2%;
+    animation: notifIn .3s;
+    overflow-y: auto;
+}
+
+.setting-choose {
+    margin: 30px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.setting h3 {
+    font-family: 'Open Sans',
+        sans-serif;
+    text-align: center;
+    margin: 10px 0 20px 0;
+    font-size: 26px;
+}
+
+.setting h4 {
+    font-size: 20px;
+}
+
+.setting p {
+    font-size: 14px;
+}
+
+
+/* Toggle switch */
+.toggle {
+    cursor: pointer;
+    display: inline-block;
+}
+
+.toggle-switch {
+    display: inline-block;
+    background: #ccc;
+    border-radius: 16px;
+    width: 58px;
+    height: 32px;
+    position: relative;
+    vertical-align: middle;
+    transition: background 0.25s;
+}
+
+.toggle-switch:before,
+.toggle-switch:after {
+    content: "";
+}
+
+.toggle-switch:before {
+    display: block;
+    background: linear-gradient(to bottom, #fff 0%, #eee 100%);
+    border-radius: 50%;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    transition: left 0.25s;
+}
+
+.toggle:hover .toggle-switch:before {
+    background: linear-gradient(to bottom, #fff 0%, #fff 100%);
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
+}
+
+.toggle-checkbox:checked+.toggle-switch {
+    background: #56c080;
+}
+
+.toggle-checkbox:checked+.toggle-switch:before {
+    left: 30px;
+}
+
+.toggle-checkbox {
+    position: absolute;
+    visibility: hidden;
+}
+
+.toggle-label {
+    margin-left: 5px;
+    position: relative;
+    top: 2px;
 }

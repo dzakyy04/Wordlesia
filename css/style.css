@@ -13,6 +13,9 @@ body {
     height: 100vh;
     width: 100vw;
     overflow: hidden;
+    background-color: white;
+    color: black;
+    transition: .3s;
 }
 
 header {
@@ -47,7 +50,7 @@ header h1 {
 }
 
 i.fa-question {
-    border: 2px solid black;
+    border: 2px solid;
     border-radius: 50%;
     font-size: 20px;
 }
@@ -133,25 +136,50 @@ i.fa-question {
 }
 
 
+/* Dark mode */
+.darkMode {
+    background-color: #13141C;
+    color: #dce7f3;
+    transition: .3s;
+}
+
+.tile-darkMode {
+    background-color: rgb(25, 26, 36);
+    color: #dce7f3;
+    transition: .3s;
+}
+
+.keyTile-darkMode {
+    background-color: rgb(105, 107, 132);
+    color: #dce7f3;
+    transition: .3s;
+}
+
 /* Color change */
 .absent {
     color: white;
     background-color: rgb(164, 174, 196);
+    border-color: rgb(164, 174, 196);
     animation: changeColor .9s;
 }
 
 .present {
     color: white;
     background-color: rgb(243, 194, 55);
+    border-color: rgb(243, 194, 55);
     animation: changeColor .9s;
 }
 
 .correct {
     color: white;
     background-color: rgb(121, 184, 81);
+    border-color: rgb(121, 184, 81);
     animation: changeColor .9s;
 }
 
+.inputLetter {
+    border-color: #7B7F98;
+}
 
 /* Animation */
 @keyframes input {
