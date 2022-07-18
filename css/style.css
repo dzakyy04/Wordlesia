@@ -129,10 +129,14 @@ i.fa-question {
 
 .keyTile#Enter {
     width: 80px;
+    color: white;
+    background-color: rgb(121, 184, 81);
 }
 
 .keyTile#Backspace {
     width: 60px;
+    color: white;
+    background-color: #e01304;
 }
 
 
