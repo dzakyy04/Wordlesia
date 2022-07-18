@@ -114,13 +114,6 @@ window.onload = function () {
         rules.style.display = "block";
     }
 
-    if (localStorage.getItem("theme") == "dark") {
-        darkModeOn();
-        toggleDark.checked = true;
-    } else {
-        darkModeOff();
-    }
-
     if (localStorage.getItem("swap") == "true") {
         swapKey(true);
         toggleSwap.checked = true;
@@ -128,6 +121,12 @@ window.onload = function () {
         swapKey(false);
     }
 
+    if (localStorage.getItem("theme") == "dark") {
+        darkModeOn();
+        toggleDark.checked = true;
+    } else {
+        darkModeOff();
+    }
 }
 
 function init() {
