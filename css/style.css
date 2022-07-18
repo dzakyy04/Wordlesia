@@ -276,12 +276,16 @@ i.fa-question {
 }
 
 @media screen and (max-width: 320px) {
+    .keyTile {
+        font-size: 9px;
+    }
+
     .board {
         width: 80vw;
         height: 56vh;
     }
 
     .tile {
-        font-size: 32px;
+        font-size: 25px;
     }
 }
