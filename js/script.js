@@ -82,6 +82,26 @@ toggleDark.addEventListener("change", () => {
     }
 });
 
+// Swap key
+const toggleSwap = document.querySelector(".toggle-checkbox.swap");
+toggleSwap.addEventListener("change", () => {
+    if (toggleSwap.checked == true) {
+        swapKey(true);
+        localStorage.setItem("swap", "true");
+    } else {
+        swapKey(false);
+        localStorage.removeItem("swap");
+    }
+});
+
+// Surrender
+const surrButton = document.querySelector("#surrend");
+surrButton.addEventListener("click", () => {
+    setting.style.display = "none";
+    gameOver = true;
+    isLose();
+});
+
 
 
 // Onload
@@ -99,6 +119,13 @@ window.onload = function () {
         toggleDark.checked = true;
     } else {
         darkModeOff();
+    }
+
+    if (localStorage.getItem("swap") == "true") {
+        swapKey(true);
+        toggleSwap.checked = true;
+    } else {
+        swapKey(false);
     }
 
 }
@@ -130,27 +157,13 @@ function init() {
     for (let i = 0; i < keyTile.length; i++) {
         keyTile[i].addEventListener("click", function () {
             if (gameOver == true) return;
-            if (keyboard[i] == "Enter") {
-                if (col < width) {
-                    notEnough.style.display = "flex";
-                    notEnoughP.innerText = "Kata tidak cukup";
-                    errorTile();
-                } else {
-                    check();
-                }
-            } else if (keyboard[i] == "Backspace") {
-                if (col > 0 && col <= width) {
-                    col--;
-                }
-                let currTile = document.getElementById(row + "-" + col);
-                currTile.innerText = "";
+
+            if (keyTile[i].id == "Enter") {
+                enter();
+            } else if (keyTile[i].id == "Backspace") {
+                backspace();
             } else {
-                if (col < width) {
-                    let currTile = document.getElementById(row + "-" + col);
-                    currTile.innerText = keyboard[i];
-                    inputTile(currTile);
-                    col++;
-                }
+                keyPress(keyboard[i]);
             }
 
             // Game selesai
@@ -165,26 +178,11 @@ function init() {
     document.addEventListener("keyup", function (e) {
         if (gameOver == true) return;
         if (e.code == "Enter") {
-            if (col < width) {
-                notEnough.style.display = "flex";
-                notEnoughP.innerText = "Kata tidak cukup";
-                errorTile();
-            } else {
-                check();
-            }
+            enter();
         } else if (e.code == "Backspace") {
-            if (col > 0 && col <= width) {
-                col--;
-            }
-            let currTile = document.getElementById(row + "-" + col);
-            currTile.classList.remove("inputLetter");
-            currTile.innerText = "";
+            backspace();
         } else if (e.code[0] == "K" && e.code[1] == "e" && e.code[2] == "y" && col < width) {
-            let currTile = document.getElementById(row + "-" + col);
-            currTile.innerText = e.code[3];
-            currTile.classList.add("inputLetter");
-            inputTile(currTile);
-            col++;
+            keyPress(e.code[3]);
         }
 
         // Game selesai
@@ -284,6 +282,36 @@ function inputTile(currTile) {
     }, 300);
 }
 
+// Keyboard function
+function enter() {
+    if (col < width) {
+        notEnough.style.display = "flex";
+        notEnoughP.innerText = "Kata tidak cukup";
+        errorTile();
+    } else {
+        check();
+    }
+}
+
+function backspace() {
+    if (col > 0 && col <= width) {
+        col--;
+    }
+    let currTile = document.getElementById(row + "-" + col);
+    currTile.classList.remove("inputLetter");
+    currTile.innerText = "";
+}
+
+function keyPress(value) {
+    if (col < width) {
+        let currTile = document.getElementById(row + "-" + col);
+        currTile.innerText = value;
+        currTile.classList.add("inputLetter");
+        inputTile(currTile);
+        col++;
+    }
+}
+
 function darkModeOn() {
     // Tile
     const tile = document.querySelectorAll(".tile");
@@ -316,4 +344,40 @@ function darkModeOff() {
     winOrLose.style.backgroundColor = "rgb(243, 241, 234)";
     // Body
     document.body.classList.remove("darkMode");
+}
+
+function swapKey(isSwap) {
+    const row3 = document.querySelector(".row-3");
+    const enter = document.getElementById("Enter");
+    const backspace = document.getElementById("Backspace");
+    enter.remove();
+    backspace.remove();
+
+    // Enter
+    const newEnter = document.createElement("div");
+    const newEnterText = document.createTextNode("ENTER");
+    newEnter.classList.add("keyTile");
+    newEnter.setAttribute("id", "Enter");
+    newEnter.setAttribute("onclick", "enter()");
+    newEnter.appendChild(newEnterText);
+
+
+    // Backspace
+    const newBackspace = document.createElement("div");
+    const backspaceLogo = document.createElement("i");
+    backspaceLogo.classList.add("fa-solid");
+    backspaceLogo.classList.add("fa-delete-left");
+    newBackspace.classList.add("keyTile");
+    newBackspace.setAttribute("id", "Backspace");
+    newBackspace.setAttribute("onclick", "backspace()");
+    newBackspace.appendChild(backspaceLogo);
+    row3.insertBefore(newBackspace, row3.firstChild);
+
+    if (isSwap) {
+        row3.insertBefore(newEnter, row3.lastChild);
+        row3.insertBefore(newBackspace, row3.firstChild);
+    } else {
+        row3.insertBefore(newEnter, row3.firstChild);
+        row3.insertBefore(newBackspace, row3.lastChild);
+    }
 }
