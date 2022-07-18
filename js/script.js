@@ -84,12 +84,14 @@ toggleDark.addEventListener("change", () => {
 
 // Swap key
 const toggleSwap = document.querySelector(".toggle-checkbox.swap");
+const enterKey = document.getElementById("Enter");
+const backSpaceKey = document.getElementById("Backspace");
 toggleSwap.addEventListener("change", () => {
     if (toggleSwap.checked == true) {
-        swapKey(true);
+        swapElements(enterKey, backSpaceKey);
         localStorage.setItem("swap", "true");
     } else {
-        swapKey(false);
+        swapElements(backSpaceKey, enterKey);
         localStorage.removeItem("swap");
     }
 });
@@ -115,10 +117,10 @@ window.onload = function () {
     }
 
     if (localStorage.getItem("swap") == "true") {
-        swapKey(true);
+        swapElements(enterKey, backSpaceKey)
         toggleSwap.checked = true;
     } else {
-        swapKey(false);
+        swapElements(backSpaceKey, enterKey);
     }
 
     if (localStorage.getItem("theme") == "dark") {
@@ -345,44 +347,10 @@ function darkModeOff() {
     document.body.classList.remove("darkMode");
 }
 
-function swapKey(isSwap) {
-    const row3 = document.querySelector(".row-3");
-    const enter = document.getElementById("Enter");
-    const backspace = document.getElementById("Backspace");
-    enter.remove();
-    backspace.remove();
+function swapElements(el1, el2) {
+    let prev1 = el1.previousSibling;
+    let prev2 = el2.previousSibling;
 
-    // Enter
-    const newEnter = document.createElement("div");
-    const newEnterText = document.createTextNode("ENTER");
-    newEnter.classList.add("keyTile");
-    newEnter.setAttribute("id", "Enter");
-    if (localStorage.getItem("theme") == "dark") {
-        newEnter.classList.add("keyTile-darkMode");
-    }
-    newEnter.setAttribute("onclick", "enter()");
-    newEnter.appendChild(newEnterText);
-
-
-    // Backspace
-    const newBackspace = document.createElement("div");
-    const backspaceLogo = document.createElement("i");
-    backspaceLogo.classList.add("fa-solid");
-    backspaceLogo.classList.add("fa-delete-left");
-    newBackspace.classList.add("keyTile");
-    newBackspace.setAttribute("id", "Backspace");
-    if (localStorage.getItem("theme") == "dark") {
-        newBackspace.classList.add("keyTile-darkMode");
-    }
-    newBackspace.setAttribute("onclick", "backspace()");
-    newBackspace.appendChild(backspaceLogo);
-
-
-    if (isSwap) {
-        row3.insertBefore(newEnter, row3.lastChild);
-        row3.insertBefore(newBackspace, row3.firstChild);
-    } else {
-        row3.insertBefore(newEnter, row3.firstChild);
-        row3.insertBefore(newBackspace, row3.lastChild);
-    }
+    prev1.after(el2);
+    prev2.after(el1);
 }

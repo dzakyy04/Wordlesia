@@ -10,13 +10,8 @@
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-html {
-    height: -webkit-fill-available;
-}
-
 body {
     height: 100vh;
-    height: -webkit-fill-available;
     width: 100vw;
     overflow: hidden;
     overflow-y: auto;
