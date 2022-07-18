@@ -19,6 +19,7 @@ body {
     height: -webkit-fill-available;
     width: 100vw;
     overflow: hidden;
+    overflow-y: auto;
     background-color: white;
     color: black;
     transition: .3s;
