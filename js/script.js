@@ -357,6 +357,9 @@ function swapKey(isSwap) {
     const newEnterText = document.createTextNode("ENTER");
     newEnter.classList.add("keyTile");
     newEnter.setAttribute("id", "Enter");
+    if (localStorage.getItem("theme") == "dark") {
+        newEnter.classList.add("keyTile-darkMode");
+    }
     newEnter.setAttribute("onclick", "enter()");
     newEnter.appendChild(newEnterText);
 
@@ -368,9 +371,12 @@ function swapKey(isSwap) {
     backspaceLogo.classList.add("fa-delete-left");
     newBackspace.classList.add("keyTile");
     newBackspace.setAttribute("id", "Backspace");
+    if (localStorage.getItem("theme") == "dark") {
+        newBackspace.classList.add("keyTile-darkMode");
+    }
     newBackspace.setAttribute("onclick", "backspace()");
     newBackspace.appendChild(backspaceLogo);
-    row3.insertBefore(newBackspace, row3.firstChild);
+
 
     if (isSwap) {
         row3.insertBefore(newEnter, row3.lastChild);
