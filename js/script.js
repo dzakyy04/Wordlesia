@@ -24,7 +24,8 @@ question.addEventListener("click", function () {
 const result = document.querySelector(".result");
 const winOrLose = document.querySelector(".result h4"); // Win or Lose
 const data = document.querySelector(".data"); // Number of guesses
-const answer = document.querySelector("#wordIs"); // Answer
+const answer = document.querySelector("#wordIs"); // 
+const keyWord = document.querySelector("#keyword");
 const button = document.querySelector(".result button");
 
 
@@ -199,7 +200,7 @@ function check() {
     }
 
     let lowGuess = guess.toLowerCase(); //case sensitive
-    if (!wordList.includes(lowGuess)) {
+    if (!guessList.includes(lowGuess)) {
         nothing.style.display = "flex";
         nothingP.innerText = "Kata tidak ada di kamus";
         errorTile();
@@ -254,7 +255,7 @@ function isLose() {
     winOrLose.innerText = "KAMU KALAH";
     data.innerText = "Kamu kalah setelah " + row + " percobaan";
     answer.innerText = word;
-    answer.href = "https://kbbi.web.id/" + word;
+    keyWord.href = "https://kbbi.web.id/" + word;
 }
 
 function errorTile() {

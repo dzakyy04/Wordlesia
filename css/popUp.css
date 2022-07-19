@@ -73,14 +73,14 @@
 }
 
 .result .content .data {
-    margin: 15px 0;
+    margin: 10px 0;
 }
 
 .result .content .answerIs {
-    margin-top: 10px;
+    margin-top: 5px;
 }
 
-.result .content a {
+.result .content #wordIs {
     margin: 10px 0;
     text-decoration: none;
     color: black;
@@ -90,6 +90,16 @@
     border: 1px dashed rgb(186, 192, 206);
     border-radius: 5px;
     font-weight: bold;
+}
+
+.result .content a {
+    text-decoration: none;
+    color: #15803D;
+}
+
+.result .content a:hover {
+    text-decoration: underline;
+    color: #2cbb60;
 }
 
 .result button {
