@@ -247,7 +247,7 @@ function isWin() {
     winOrLose.innerText = "KAMU MENANG";
     data.innerText = "Kamu menang dalam " + (row + 1) + " percobaan";
     answer.innerText = word;
-    answer.href = "https://kbbi.web.id/" + word;
+    keyWord.href = "https://kbbi.kemdikbud.go.id/entri/" + word;
 }
 
 function isLose() {
@@ -255,7 +255,7 @@ function isLose() {
     winOrLose.innerText = "KAMU KALAH";
     data.innerText = "Kamu kalah setelah " + row + " percobaan";
     answer.innerText = word;
-    keyWord.href = "https://kbbi.web.id/" + word;
+    keyWord.href = "https://kbbi.kemdikbud.go.id/entri/" + word;
 }
 
 function errorTile() {
