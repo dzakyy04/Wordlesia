@@ -89,10 +89,8 @@ const backSpaceKey = document.getElementById("Backspace");
 toggleSwap.addEventListener("change", () => {
     if (toggleSwap.checked == true) {
         swapElements(enterKey, backSpaceKey);
-        localStorage.setItem("swap", "true");
     } else {
         swapElements(backSpaceKey, enterKey);
-        localStorage.removeItem("swap");
     }
 });
 
@@ -114,13 +112,6 @@ window.onload = function () {
         rules.style.display = "none";
     } else {
         rules.style.display = "block";
-    }
-
-    if (localStorage.getItem("swap") == "true") {
-        swapElements(enterKey, backSpaceKey)
-        toggleSwap.checked = true;
-    } else {
-        swapElements(backSpaceKey, enterKey);
     }
 
     if (localStorage.getItem("theme") == "dark") {
